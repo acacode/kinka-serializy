@@ -42,9 +42,23 @@ const { data } = await api.get('/client/1234', {
 })
 
 console.log(data) // your serialized client model
+```  
 
+Also if you want to serialize error messages from server you need to:  
+
+```js
+
+const api = kinka.create({
+  baseURL: 'https://your-api.com',
+  middlewares: [
+    KinkaSerializy({
+      errorModel: YourPrettifiedErrorModel
+    })
+  ]
+})
 
 ```
+
 
 <!-- ## 📚 Usage
 

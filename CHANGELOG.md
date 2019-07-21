@@ -16,4 +16,4 @@
 
 ### Added  
 - Created project  
-- Added ability to attach error model for serializing error models  
+- Added ability to attach error model for serializing server side error messages
