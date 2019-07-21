@@ -21,7 +21,32 @@
     # or using yarn
     $ yarn add kinka-serializy
 
-<!-- ## 📚 Documentation & Examples
+## 📚 Usage  
+
+```js
+import kinka from 'kinka'
+import KinkaSerializy from 'kinka-serializy'
+
+
+const api = kinka.create({
+  baseURL: 'https://your-api.com',
+  middlewares: [
+    KinkaSerializy
+  ]
+})
+
+// ...
+
+const { data } = await api.get('/client/1234', {
+  model: ClientModel
+})
+
+console.log(data) // your serialized client model
+
+
+```
+
+<!-- ## 📚 Usage
 
 [Documentation](./docs/documentation.md)  
 [Examples](./test/examples)  

@@ -11,7 +11,7 @@ const deps = [
 ]
 
 const inputOutputConfig = (outputFile, outputFormat, commonOutput = {}) => ({
-  input: 'index.js',
+  input: 'src/index.js',
   output: {
     file: `${outputFile}`,
     format: outputFormat,
@@ -46,7 +46,7 @@ const productionBuildPlugins = [
           'response',
           'request',
           'isError',
-          'KinkaSerializy'
+          'KinkaSerializy',
         ],
       },
       module: true,

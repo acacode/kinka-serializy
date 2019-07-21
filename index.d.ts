@@ -1,6 +1,13 @@
-import { KinkaInstance } from 'kinka'
+import { KinkaInstance, MiddlewareFunction } from 'kinka'
 import { ModelWrapper } from 'serializy'
 
-declare type KinkaSerializy = (instance: KinkaInstance) => (void | (errorModel: ModelWrapper) => any)
+declare interface SerializyConfiguration {
+    errorModel?: ModelWrapper<any>
+}
+
+declare type KinkaSerializy =
+    MiddlewareFunction |
+    (configuration: SerializyConfiguration) => MiddlewareFunction
+
 
 export default KinkaSerializy
