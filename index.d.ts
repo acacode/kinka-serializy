@@ -1,5 +1,5 @@
 import { KinkaInstance, MiddlewareFunction } from 'kinka'
-import { ModelWrapper } from 'serializy'
+import { ModelWrapper } from 'serializy/src/model_wrapper'
 
 declare interface SerializyConfiguration {
     errorModel?: ModelWrapper<any>
@@ -7,7 +7,6 @@ declare interface SerializyConfiguration {
 
 declare type KinkaSerializy =
     MiddlewareFunction |
-    (configuration: SerializyConfiguration) => MiddlewareFunction
-
+    ((configuration: SerializyConfiguration) => MiddlewareFunction)
 
 export default KinkaSerializy

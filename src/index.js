@@ -73,7 +73,7 @@ function KinkaSerializy(data) {
           response.data =
             response.data instanceof Array
               ? response.data.map(options.model.serialize)
-              : response.model.serialize(options.data)
+              : options.model.serialize(response.data)
         }
       }
 
