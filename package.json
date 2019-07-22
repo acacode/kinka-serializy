@@ -1,6 +1,6 @@
 {
   "name": "kinka-serializy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "description": "integration kinka with serializy",
   "main": "lib/kinka-serializy.js",
@@ -46,18 +46,10 @@
     "rollup-plugin-terser": "^4.0.4"
   },
   "keywords": [
-    "xmlhttprequest",
-    "request",
-    "requests-html",
-    "ajax-request",
-    "ajax",
-    "javascript",
-    "javascript-library",
-    "http-client",
-    "httpclient",
-    "http",
+    "kinka",
     "serializy",
-    "mapper"
+    "javascript",
+    "javascript-library"
   ],
   "typings": "./index.d.ts",
   "dependencies": {},

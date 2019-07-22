@@ -12,6 +12,11 @@
  -->
 
 
+## [0.0.2](https://github.com/acacode/kinka-serializy/releases/tag/0.0.2)
+
+### Fixed
+- Problem with not serializing server side structures
+
 ## [0.0.1](https://github.com/acacode/kinka-serializy/releases/tag/0.0.1)
 
 ### Added  
