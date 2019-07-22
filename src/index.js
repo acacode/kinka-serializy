@@ -60,21 +60,19 @@ function KinkaSerializy(data) {
         }
       }
 
-      if (options.model) {
+      if (response.isError) {
+        if (errorModel) response.err = errorModel.serialize(response.err)
+      } else if (options.model) {
         if (!options.model.serialize) {
           throw new Error(
             `Property "model" for request ${method.toUpperCase()}:${url} is not valid`
           )
         }
 
-        if (response.isError) {
-          if (errorModel) response.data = errorModel.serialize(response.data)
-        } else {
-          response.data =
-            response.data instanceof Array
-              ? response.data.map(options.model.serialize)
-              : options.model.serialize(response.data)
-        }
+        response.data =
+          response.data instanceof Array
+            ? response.data.map(options.model.serialize)
+            : options.model.serialize(response.data)
       }
 
       return response
