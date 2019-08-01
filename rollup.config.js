@@ -1,14 +1,10 @@
-const packageJson = require('./package.json')
+const { peerDependencies } = require('./package.json')
 const babel = require('rollup-plugin-babel')
 const resolve = require('rollup-plugin-node-resolve')
 const replace = require('rollup-plugin-replace')
 const terser = require('rollup-plugin-terser').terser
-// const commonjs = require('rollup-plugin-commonjs')
 
-const deps = [
-  ...Object.keys(packageJson.dependencies || {}),
-  ...Object.keys(packageJson.peerDependencies || {}),
-]
+const deps = [...Object.keys(peerDependencies || {})]
 
 const inputOutputConfig = (outputFile, outputFormat, commonOutput = {}) => ({
   input: 'src/index.js',
@@ -60,19 +56,19 @@ module.exports = [
   {
     ...inputOutputConfig('lib/kinka-serializy.js', 'cjs'),
     external: deps,
-    plugins: [babel()],
+    plugins: [resolve(), babel()],
   },
   {
     ...inputOutputConfig('lib/kinka-serializy.min.js', 'cjs'),
     external: deps,
-    plugins: [babel(), ...productionBuildPlugins],
+    plugins: [resolve(), babel(), ...productionBuildPlugins],
   },
 
   // EcmaScript builds
   {
     ...inputOutputConfig('es/kinka-serializy.js', 'es'),
     external: deps,
-    plugins: [babel()],
+    plugins: [resolve(), babel()],
   },
   {
     ...inputOutputConfig('es/kinka-serializy.mjs', 'es'),

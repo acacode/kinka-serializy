@@ -10,7 +10,7 @@
 import {
   deserializeRequestData,
   serializeResponseData,
-} from 'http-helpers-serializy'  
+} from 'http-helpers-serializy'
 
 /**
  * @name KinkaSerializy - kinka middleware
