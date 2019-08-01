@@ -5,8 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
 'use strict'
+
+import {
+  deserializeRequestData,
+  serializeResponseData,
+} from 'http-helpers-serializy'
 
 /**
  * @name KinkaSerializy - kinka middleware
@@ -36,17 +40,12 @@ function KinkaSerializy(data) {
         }
       }
 
-      if (options.model && options.data && typeof options.data === 'object') {
-        if (!options.model.deserialize) {
-          throw new Error(
-            `Property "model" for request ${method.toUpperCase()}:${url} is not valid`
-          )
-        }
-        options.data =
-          options.data instanceof Array
-            ? options.data.map(options.model.deserialize)
-            : options.model.deserialize(options.data)
-      }
+      const { data } = deserializeRequestData(options.model, options.data, {
+        method,
+        url,
+      })
+
+      options.data = data
 
       return options
     }
@@ -60,22 +59,20 @@ function KinkaSerializy(data) {
         }
       }
 
-      if (options.model) {
-        if (!options.model.serialize) {
-          throw new Error(
-            `Property "model" for request ${method.toUpperCase()}:${url} is not valid`
-          )
+      const { data, error } = serializeResponseData(
+        options.model,
+        response.data,
+        {
+          method,
+          url,
+          isError: response.isError,
+          errorModel,
+          error: response.err,
         }
+      )
 
-        if (response.isError) {
-          if (errorModel) response.data = errorModel.serialize(response.data)
-        } else {
-          response.data =
-            response.data instanceof Array
-              ? response.data.map(options.model.serialize)
-              : options.model.serialize(response.data)
-        }
-      }
+      response.data = data
+      response.err = error
 
       return response
     }
