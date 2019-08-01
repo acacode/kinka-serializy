@@ -12,6 +12,15 @@
  -->
 
 
+## [0.0.3](https://github.com/acacode/kinka-serializy/releases/tag/0.0.3)
+
+### Changed
+- Moved all code linked with transforming data to the library [http-helpers-serializy](https://www.npmjs.com/package/http-helpers-serializy)  
+- Rollup config  
+
+### Fixed  
+- Problem with trying to use not existing `errorModel` property  
+
 ## [0.0.2](https://github.com/acacode/kinka-serializy/releases/tag/0.0.2)
 
 ### Fixed

@@ -1,6 +1,6 @@
 {
   "name": "kinka-serializy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "description": "integration kinka with serializy",
   "main": "lib/kinka-serializy.js",
